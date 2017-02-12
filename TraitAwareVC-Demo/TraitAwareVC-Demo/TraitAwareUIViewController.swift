@@ -18,6 +18,11 @@ protocol TraitAwareViewController {
                         horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass
   )
   
+  func insertConstraints(_ constraints: [NSLayoutConstraint],
+                        vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass,
+                        horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass
+  )
+  
   func activateConstraintsBasedOnTraitCollection()
   
 }
@@ -30,38 +35,44 @@ class TraitAwareUIViewController: UIViewController {
 }
 
 extension TraitAwareUIViewController: TraitAwareViewController {
-  
   public func insertConstraint(_ constraint: NSLayoutConstraint,
+                               vertically forVerticalSizeClass: UIUserInterfaceSizeClass = .unspecified,
+                               horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified) {
+    self.insertConstraints([constraint], vertically: forVerticalSizeClass, horizontally: forHorizontalSizeClass)
+  }
+
+  
+  public func insertConstraints(_ constraints: [NSLayoutConstraint],
                                vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass = .unspecified,
                                horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
     ) {
     if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .unspecified {
-      verticalCompactHorizontalRegularConstraints.append(constraint)
-      verticalCompactHorizontalCompactConstraints.append(constraint)
-      verticalRegularHorizontalCompactConstraints.append(constraint)
-      verticalRegularHorizontalRegularConstraints.append(constraint)
+      verticalCompactHorizontalRegularConstraints.append(contentsOf: constraints)
+      verticalCompactHorizontalCompactConstraints.append(contentsOf: constraints)
+      verticalRegularHorizontalCompactConstraints.append(contentsOf: constraints)
+      verticalRegularHorizontalRegularConstraints.append(contentsOf: constraints)
       
       // Use recursion to avoid strange bug, where constraints where not deactivated
     } else if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .compact {
-      self.insertConstraint(constraint, vertically: .compact, horizontally: .compact)
-      self.insertConstraint(constraint, vertically: .regular, horizontally: .compact)
+      self.insertConstraints(constraints, vertically: .compact, horizontally: .compact)
+      self.insertConstraints(constraints, vertically: .regular, horizontally: .compact)
     } else if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .regular {
-      self.insertConstraint(constraint, vertically: .compact, horizontally: .regular)
-      self.insertConstraint(constraint, vertically: .regular, horizontally: .regular)
+      self.insertConstraints(constraints, vertically: .compact, horizontally: .regular)
+      self.insertConstraints(constraints, vertically: .regular, horizontally: .regular)
     } else if forVerticalSizeClass == .compact, forHorizontalSizeClass == .unspecified {
-      self.insertConstraint(constraint, vertically: .compact, horizontally: .compact)
-      self.insertConstraint(constraint, vertically: .compact, horizontally: .regular)
+      self.insertConstraints(constraints, vertically: .compact, horizontally: .compact)
+      self.insertConstraints(constraints, vertically: .compact, horizontally: .regular)
     } else if forVerticalSizeClass == .regular, forHorizontalSizeClass == .unspecified {
-      self.insertConstraint(constraint, vertically: .regular, horizontally: .compact)
-      self.insertConstraint(constraint, vertically: .regular, horizontally: .regular)
+      self.insertConstraints(constraints, vertically: .regular, horizontally: .compact)
+      self.insertConstraints(constraints, vertically: .regular, horizontally: .regular)
     } else if forVerticalSizeClass == .compact, forHorizontalSizeClass == .regular {
-      verticalCompactHorizontalRegularConstraints.append(constraint)
+      verticalCompactHorizontalRegularConstraints.append(contentsOf: constraints)
     } else if forVerticalSizeClass == .compact, forHorizontalSizeClass == .compact {
-      verticalCompactHorizontalCompactConstraints.append(constraint)
+      verticalCompactHorizontalCompactConstraints.append(contentsOf: constraints)
     } else if forVerticalSizeClass == .regular, forHorizontalSizeClass == .compact {
-      verticalRegularHorizontalCompactConstraints.append(constraint)
+      verticalRegularHorizontalCompactConstraints.append(contentsOf: constraints)
     } else if forVerticalSizeClass == .regular, forHorizontalSizeClass == .regular {
-      verticalRegularHorizontalRegularConstraints.append(constraint)
+      verticalRegularHorizontalRegularConstraints.append(contentsOf: constraints)
     }
   }
   
