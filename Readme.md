@@ -1,6 +1,6 @@
 # TraitAwareUIViewController
 
-This UIViewController subclass has the ability, to set constraints based on the TraitCollection:
+This UIViewController subclass has the ability to set constraints based on the TraitCollection:
 
 ```swift
 // For Horizontally Regular, GreenView is in lower-leading corner
