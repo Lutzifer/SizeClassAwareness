@@ -8,7 +8,7 @@
 import UIKit
 import ObjectiveC
 
-protocol TraitAwareViewController {
+public protocol TraitAwareViewController {
   func insertConstraint(_ constraint: NSLayoutConstraint,
                         vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass,
                         horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass

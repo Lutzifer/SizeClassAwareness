@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TraitAwareness
 
 class ViewController: UIViewController {
   

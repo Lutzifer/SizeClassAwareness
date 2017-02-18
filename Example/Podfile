@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TraitAwareness_Example' do
+  pod 'TraitAwareness', :path => '../'
+
+  target 'TraitAwareness_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
