@@ -92,11 +92,42 @@ protocol TraitAwareViewController {
                         horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass
   )
   
+  func removeConstraint(_ constraint: NSLayoutConstraint,
+                        vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass,
+                        horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass
+  )
+  
+  func removeConstraints(_ constraints: [NSLayoutConstraint],
+                         vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass,
+                         horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass
+  )
+  
   func activateConstraintsBasedOnTraitCollection()
   
 }
 
+// Swift 2 Array Extension
+// http://supereasyapps.com/blog/2015/9/22/how-to-remove-an-array-of-objects-from-a-swift-2-array-removeobjectsinarray
+extension Array where Element: Equatable {
+  mutating func removeObject(object: Element) {
+    if let index = self.index(of: object) {
+      self.remove(at: index)
+    }
+  }
+  
+  mutating func removeObjectsInArray(array: [Element]) {
+    for object in array {
+      self.removeObject(object: object)
+    }
+  }
+}
+
 extension UIViewController : TraitAwareViewController {
+  
+  public enum ConstraintOperation {
+    case insert
+    case remove
+  }
   
   private struct AssociatedKey {
     static var constraintsDictionaryKey = "constraintsDictionary"
@@ -120,18 +151,41 @@ extension UIViewController : TraitAwareViewController {
   public func insertConstraint(_ constraint: NSLayoutConstraint,
                                vertically forVerticalSizeClass: UIUserInterfaceSizeClass = .unspecified,
                                horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified) {
-    self.insertConstraints([constraint], vertically: forVerticalSizeClass, horizontally: forHorizontalSizeClass)
+    self.runOperation(.insert, with: [constraint], vertically: forVerticalSizeClass, horizontally: forHorizontalSizeClass)
+  }
+  
+  func insertConstraints(_ constraints: [NSLayoutConstraint],
+                         vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass = .unspecified,
+                         horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
+    ) {
+    self.runOperation(.insert, with: constraints, vertically: forVerticalSizeClass, horizontally: forHorizontalSizeClass)
+  }
+  
+  func removeConstraint(_ constraint: NSLayoutConstraint,
+                        vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass = .unspecified,
+                        horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
+    ){
+    self.runOperation(.remove, with: [constraint], vertically: forVerticalSizeClass, horizontally: forHorizontalSizeClass)
+  }
+  
+  func removeConstraints(_ constraints: [NSLayoutConstraint],
+                         vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass = .unspecified,
+                         horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
+    ){
+    self.runOperation(.remove, with: constraints, vertically: forVerticalSizeClass, horizontally: forHorizontalSizeClass)
   }
 
+
   
-  public func insertConstraints(_ constraints: [NSLayoutConstraint],
-                               vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass = .unspecified,
-                               horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
+  func runOperation(_ operation: ConstraintOperation = .insert,
+                      with constraints: [NSLayoutConstraint],
+                      vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass = .unspecified,
+                      horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
     ) {
     if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .unspecified {
-      SizeClassPair.allPairs.forEach({ pair in
-        constraintsDictionary[pair]!.append(contentsOf: constraints)
-      })
+      SizeClassPair.allPairs.forEach { pair in
+        self.apply(operation: operation, for: constraints, using: pair)
+      }
       // Use recursion to avoid strange bug, where constraints were not deactivated
     } else if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .compact {
       self.insertConstraints(constraints, vertically: .compact, horizontally: .compact)
@@ -146,11 +200,20 @@ extension UIViewController : TraitAwareViewController {
       self.insertConstraints(constraints, vertically: .regular, horizontally: .compact)
       self.insertConstraints(constraints, vertically: .regular, horizontally: .regular)
     } else {
-       constraintsDictionary[SizeClassPair.pair(forVertical: forVerticalSizeClass,
-                                                forHorizontal: forHorizontalSizeClass
-                            )]!.append(contentsOf: constraints)
-      
+      self.apply(operation: operation, for: constraints, using: SizeClassPair.pair(forVertical: forVerticalSizeClass,
+                                                                                   forHorizontal: forHorizontalSizeClass
+      ))
     }
+  }
+  
+  func apply(operation: ConstraintOperation, for constraints: [NSLayoutConstraint], using pair: SizeClassPair) {
+    switch operation {
+    case .insert:
+      constraintsDictionary[pair]!.append(contentsOf: constraints)
+    case .remove:
+      constraintsDictionary[pair]!.removeObjectsInArray(array: constraints)
+    }
+
   }
   
   public func activateConstraintsBasedOnTraitCollection() {
