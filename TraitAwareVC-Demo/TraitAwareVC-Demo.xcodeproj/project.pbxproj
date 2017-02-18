@@ -15,7 +15,13 @@
 		8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass.swift */; };
 		8410D9261E50B60A003AEA65 /* TraitAwareUIViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */; };
 		8410D9271E50B60A003AEA65 /* TraitAwareUIViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84C994271E51E98700A112EE /* TraitAwareUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9161E50B094003AEA65 /* TraitAwareUIViewController.swift */; };
+		84C994271E51E98700A112EE /* UIViewController+TraitAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9161E50B094003AEA65 /* UIViewController+TraitAwareness.swift */; };
+		84D3B6FC1E589A6E0040109C /* Lifting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B6FB1E589A6E0040109C /* Lifting.swift */; };
+		84D3B6FD1E589AD40040109C /* Lifting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B6FB1E589A6E0040109C /* Lifting.swift */; };
+		84D3B6FF1E589B150040109C /* SizeClassPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B6FE1E589B150040109C /* SizeClassPair.swift */; };
+		84D3B7001E589B180040109C /* SizeClassPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B6FE1E589B150040109C /* SizeClassPair.swift */; };
+		84D3B7021E589B4C0040109C /* Array+RemoveObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B7011E589B4C0040109C /* Array+RemoveObjects.swift */; };
+		84D3B7031E589B510040109C /* Array+RemoveObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3B7011E589B4C0040109C /* Array+RemoveObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +56,13 @@
 		8410D90B1E50805D003AEA65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8410D90E1E50805D003AEA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8410D9101E50805D003AEA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8410D9161E50B094003AEA65 /* TraitAwareUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TraitAwareUIViewController.swift; path = "../TraitAwareVC-Demo/TraitAwareUIViewController.swift"; sourceTree = "<group>"; };
+		8410D9161E50B094003AEA65 /* UIViewController+TraitAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+TraitAwareness.swift"; path = "../TraitAwareVC-Demo/UIViewController+TraitAwareness.swift"; sourceTree = "<group>"; };
 		8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUserInterfaceSizeClass.swift; sourceTree = "<group>"; };
 		8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraitAwareUIViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8410D9221E50B60A003AEA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84D3B6FB1E589A6E0040109C /* Lifting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lifting.swift; sourceTree = "<group>"; };
+		84D3B6FE1E589B150040109C /* SizeClassPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeClassPair.swift; sourceTree = "<group>"; };
+		84D3B7011E589B4C0040109C /* Array+RemoveObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RemoveObjects.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +119,11 @@
 		8410D9201E50B60A003AEA65 /* TraitAwareUIViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8410D9161E50B094003AEA65 /* TraitAwareUIViewController.swift */,
+				8410D9161E50B094003AEA65 /* UIViewController+TraitAwareness.swift */,
 				8410D9221E50B60A003AEA65 /* Info.plist */,
+				84D3B6FB1E589A6E0040109C /* Lifting.swift */,
+				84D3B6FE1E589B150040109C /* SizeClassPair.swift */,
+				84D3B7011E589B4C0040109C /* Array+RemoveObjects.swift */,
 			);
 			path = TraitAwareUIViewController;
 			sourceTree = "<group>";
@@ -182,6 +194,7 @@
 					};
 					8410D91E1E50B60A003AEA65 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -230,10 +243,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C994271E51E98700A112EE /* TraitAwareUIViewController.swift in Sources */,
+				84C994271E51E98700A112EE /* UIViewController+TraitAwareness.swift in Sources */,
 				8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass.swift in Sources */,
 				8410D9071E50805D003AEA65 /* ViewController.swift in Sources */,
+				84D3B7001E589B180040109C /* SizeClassPair.swift in Sources */,
 				8410D9051E50805D003AEA65 /* AppDelegate.swift in Sources */,
+				84D3B6FD1E589AD40040109C /* Lifting.swift in Sources */,
+				84D3B7031E589B510040109C /* Array+RemoveObjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D3B7021E589B4C0040109C /* Array+RemoveObjects.swift in Sources */,
+				84D3B6FC1E589A6E0040109C /* Lifting.swift in Sources */,
+				84D3B6FF1E589B150040109C /* SizeClassPair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +389,7 @@
 		8410D9141E50805D003AEA65 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TraitAwareVC-Demo/Info.plist";
@@ -383,6 +403,7 @@
 		8410D9151E50805D003AEA65 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TraitAwareVC-Demo/Info.plist";
@@ -396,6 +417,7 @@
 		8410D9291E50B60A003AEA65 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -409,6 +431,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.lutz-wiesent.TraitAwareUIViewController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -418,6 +441,7 @@
 		8410D92A1E50B60A003AEA65 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
