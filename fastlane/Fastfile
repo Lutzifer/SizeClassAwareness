@@ -34,7 +34,7 @@ platform :ios do
       multi_line_end_keyword: "END"
     )
 
-    git_commit(path: "../SizeClassAwareness.podspec", message: "Release #{versionToRelease}")
+    git_commit(path: "SizeClassAwareness.podspec", message: "Release #{versionToRelease}")
 
     add_git_tag(
       tag: "#{versionToRelease}"
