@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'UIViewController extension, which adds the ability to set constraints based on the TraitCollection..'
 
   s.description      = <<-DESC
-Including this pod extends UIViewControllers with functions to set constraints for any combination of compact, regular or undefined for vertical and horizontal sizeclasses. The correct constraints can then be activated with a simple call when transitioning to another TraitCollection.
+Including this pod extends UIViewControllers with functions to set constraints for any combination of compact, regular or undefined SizeClasses for vertical and horizontal orientation. The correct constraints can then be activated with a simple call when transitioning to another TraitCollection.
                        DESC
 
   s.homepage         = 'https://github.com/Lutzifer/SizeClassAwareness'
