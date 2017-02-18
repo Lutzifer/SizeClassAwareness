@@ -12,10 +12,10 @@
 		8410D90A1E50805D003AEA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8410D9081E50805D003AEA65 /* Main.storyboard */; };
 		8410D90C1E50805D003AEA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8410D90B1E50805D003AEA65 /* Assets.xcassets */; };
 		8410D90F1E50805D003AEA65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8410D90D1E50805D003AEA65 /* LaunchScreen.storyboard */; };
-		8410D9171E50B095003AEA65 /* TraitAwareUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9161E50B094003AEA65 /* TraitAwareUIViewController.swift */; };
 		8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass.swift */; };
 		8410D9261E50B60A003AEA65 /* TraitAwareUIViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */; };
 		8410D9271E50B60A003AEA65 /* TraitAwareUIViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84C994271E51E98700A112EE /* TraitAwareUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9161E50B094003AEA65 /* TraitAwareUIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,10 +230,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C994271E51E98700A112EE /* TraitAwareUIViewController.swift in Sources */,
 				8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass.swift in Sources */,
 				8410D9071E50805D003AEA65 /* ViewController.swift in Sources */,
 				8410D9051E50805D003AEA65 /* AppDelegate.swift in Sources */,
-				8410D9171E50B095003AEA65 /* TraitAwareUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +456,7 @@
 				8410D9151E50805D003AEA65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8410D9281E50B60A003AEA65 /* Build configuration list for PBXNativeTarget "TraitAwareUIViewController" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +465,7 @@
 				8410D92A1E50B60A003AEA65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

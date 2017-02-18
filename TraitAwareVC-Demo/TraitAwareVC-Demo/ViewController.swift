@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: TraitAwareUIViewController {
+class ViewController: UIViewController {
   
   let label = UILabel()
   let greenView = UIView()

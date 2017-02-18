@@ -6,12 +6,81 @@
 //
 
 import UIKit
+import ObjectiveC
+
+// Stored Properties in Extensions as in http://stackoverflow.com/questions/25426780/how-to-have-stored-properties-in-swift-the-same-way-i-had-on-objective-c
+
+final class Lifted<T> {
+  let value: T
+  init(_ x: T) {
+    value = x
+  }
+}
+
+private func lift<T>(x: T) -> Lifted<T>  {
+  return Lifted(x)
+}
+
+func setAssociatedObject<T>(object: AnyObject, value: T, associativeKey: UnsafeRawPointer, policy: objc_AssociationPolicy) {
+    objc_setAssociatedObject(object, associativeKey, value,  policy)
+}
+
+func getAssociatedObject<T>(object: AnyObject, associativeKey: UnsafeRawPointer) -> T? {
+  if let v = objc_getAssociatedObject(object, associativeKey) as? T {
+    return v
+  }
+  else if let v = objc_getAssociatedObject(object, associativeKey) as? Lifted<T> {
+    return v.value
+  }
+  else {
+    return nil
+  }
+}
+
+class SizeClassPair: NSObject {
+  let verticalSizeClass: UIUserInterfaceSizeClass
+  let horizontalSizeClass: UIUserInterfaceSizeClass
+  
+  init(verticalSizeClass: UIUserInterfaceSizeClass, horizontalSizeClass: UIUserInterfaceSizeClass) {
+    self.verticalSizeClass = verticalSizeClass
+    self.horizontalSizeClass = horizontalSizeClass
+  }
+  
+  static let compactCompactPair = SizeClassPair(verticalSizeClass: .compact, horizontalSizeClass: .compact)
+  static let compactRegularPair = SizeClassPair(verticalSizeClass: .compact, horizontalSizeClass: .regular)
+  static let regularCompactPair = SizeClassPair(verticalSizeClass: .regular, horizontalSizeClass: .compact)
+  static let regularRegularPair = SizeClassPair(verticalSizeClass: .regular, horizontalSizeClass: .regular)
+  
+  static func pair(forVertical verticalSizeClass: UIUserInterfaceSizeClass, forHorizontal horizontalSizeClass: UIUserInterfaceSizeClass) -> SizeClassPair {
+    if verticalSizeClass == .compact, horizontalSizeClass == .compact {
+      return compactCompactPair
+    } else if verticalSizeClass == .compact, horizontalSizeClass == .regular {
+      return compactRegularPair
+    } else if verticalSizeClass == .regular, horizontalSizeClass == .compact {
+      return regularCompactPair
+    } else {
+      return regularRegularPair
+    }
+  }
+  
+  static let allPairs = [SizeClassPair.compactCompactPair, SizeClassPair.compactRegularPair, SizeClassPair.regularCompactPair, SizeClassPair.regularRegularPair]
+
+  override public var hashValue: Int {
+    return "\(verticalSizeClass)\(horizontalSizeClass)".hashValue
+  }
+
+  override public var hash: Int {
+    return hashValue
+  }
+
+  public static func ==(lhs: SizeClassPair, rhs: SizeClassPair) -> Bool {
+    return lhs.horizontalSizeClass == rhs.horizontalSizeClass && lhs.verticalSizeClass == rhs.verticalSizeClass
+  }
+
+}
 
 protocol TraitAwareViewController {
-  var verticalCompactHorizontalRegularConstraints: [NSLayoutConstraint] { get }
-  var verticalCompactHorizontalCompactConstraints: [NSLayoutConstraint] { get }
-  var verticalRegularHorizontalCompactConstraints: [NSLayoutConstraint] { get }
-  var verticalRegularHorizontalRegularConstraints: [NSLayoutConstraint] { get }
+  var constraintsDictionary: [ SizeClassPair : [NSLayoutConstraint] ] { get }
   
   func insertConstraint(_ constraint: NSLayoutConstraint,
                         vertically   forVerticalSizeClass:   UIUserInterfaceSizeClass,
@@ -27,14 +96,27 @@ protocol TraitAwareViewController {
   
 }
 
-class TraitAwareUIViewController: UIViewController {
-  lazy var verticalCompactHorizontalRegularConstraints = [NSLayoutConstraint]()
-  lazy var verticalCompactHorizontalCompactConstraints = [NSLayoutConstraint]()
-  lazy var verticalRegularHorizontalCompactConstraints = [NSLayoutConstraint]()
-  lazy var verticalRegularHorizontalRegularConstraints = [NSLayoutConstraint]()
-}
-
-extension TraitAwareUIViewController: TraitAwareViewController {
+extension UIViewController : TraitAwareViewController {
+  
+  private struct AssociatedKey {
+    static var constraintsDictionaryKey = "constraintsDictionary"
+  }
+  
+  var constraintsDictionary: [ SizeClassPair : [NSLayoutConstraint] ]  {
+    get {
+      return getAssociatedObject(object: self, associativeKey: &AssociatedKey.constraintsDictionaryKey)
+        ?? [ .compactCompactPair : [NSLayoutConstraint](),
+             .compactRegularPair : [NSLayoutConstraint](),
+             .regularCompactPair : [NSLayoutConstraint](),
+             .regularRegularPair : [NSLayoutConstraint]()
+            ]
+    }
+    
+    set {
+    setAssociatedObject(object: self, value: newValue, associativeKey: &AssociatedKey.constraintsDictionaryKey, policy: objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+  }
+  
   public func insertConstraint(_ constraint: NSLayoutConstraint,
                                vertically forVerticalSizeClass: UIUserInterfaceSizeClass = .unspecified,
                                horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified) {
@@ -47,12 +129,10 @@ extension TraitAwareUIViewController: TraitAwareViewController {
                                horizontally forHorizontalSizeClass: UIUserInterfaceSizeClass = .unspecified
     ) {
     if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .unspecified {
-      verticalCompactHorizontalRegularConstraints.append(contentsOf: constraints)
-      verticalCompactHorizontalCompactConstraints.append(contentsOf: constraints)
-      verticalRegularHorizontalCompactConstraints.append(contentsOf: constraints)
-      verticalRegularHorizontalRegularConstraints.append(contentsOf: constraints)
-      
-      // Use recursion to avoid strange bug, where constraints where not deactivated
+      SizeClassPair.allPairs.forEach({ pair in
+        constraintsDictionary[pair]!.append(contentsOf: constraints)
+      })
+      // Use recursion to avoid strange bug, where constraints were not deactivated
     } else if forVerticalSizeClass == .unspecified, forHorizontalSizeClass == .compact {
       self.insertConstraints(constraints, vertically: .compact, horizontally: .compact)
       self.insertConstraints(constraints, vertically: .regular, horizontally: .compact)
@@ -65,63 +145,27 @@ extension TraitAwareUIViewController: TraitAwareViewController {
     } else if forVerticalSizeClass == .regular, forHorizontalSizeClass == .unspecified {
       self.insertConstraints(constraints, vertically: .regular, horizontally: .compact)
       self.insertConstraints(constraints, vertically: .regular, horizontally: .regular)
-    } else if forVerticalSizeClass == .compact, forHorizontalSizeClass == .regular {
-      verticalCompactHorizontalRegularConstraints.append(contentsOf: constraints)
-    } else if forVerticalSizeClass == .compact, forHorizontalSizeClass == .compact {
-      verticalCompactHorizontalCompactConstraints.append(contentsOf: constraints)
-    } else if forVerticalSizeClass == .regular, forHorizontalSizeClass == .compact {
-      verticalRegularHorizontalCompactConstraints.append(contentsOf: constraints)
-    } else if forVerticalSizeClass == .regular, forHorizontalSizeClass == .regular {
-      verticalRegularHorizontalRegularConstraints.append(contentsOf: constraints)
+    } else {
+       constraintsDictionary[SizeClassPair.pair(forVertical: forVerticalSizeClass,
+                                                forHorizontal: forHorizontalSizeClass
+                            )]!.append(contentsOf: constraints)
+      
     }
   }
   
   public func activateConstraintsBasedOnTraitCollection() {
-    if self.traitCollection.verticalSizeClass == .compact, self.traitCollection.horizontalSizeClass == .regular {
-      NSLayoutConstraint.deactivate(verticalCompactHorizontalCompactConstraints)
-      NSLayoutConstraint.deactivate(verticalRegularHorizontalCompactConstraints)
-      NSLayoutConstraint.deactivate(verticalRegularHorizontalRegularConstraints)
-      
-      NSLayoutConstraint.activate(verticalCompactHorizontalRegularConstraints)
-    } else if self.traitCollection.verticalSizeClass == .compact, self.traitCollection.horizontalSizeClass == .compact {
-      NSLayoutConstraint.deactivate(verticalCompactHorizontalRegularConstraints)
-      NSLayoutConstraint.deactivate(verticalRegularHorizontalCompactConstraints)
-      NSLayoutConstraint.deactivate(verticalRegularHorizontalRegularConstraints)
-      
-      NSLayoutConstraint.activate(verticalCompactHorizontalCompactConstraints)
-    } else if self.traitCollection.verticalSizeClass == .regular, self.traitCollection.horizontalSizeClass == .compact {
-      NSLayoutConstraint.deactivate(verticalCompactHorizontalRegularConstraints)
-      NSLayoutConstraint.deactivate(verticalCompactHorizontalCompactConstraints)
-      NSLayoutConstraint.deactivate(verticalRegularHorizontalRegularConstraints)
-      
-      NSLayoutConstraint.activate(verticalRegularHorizontalCompactConstraints)
-    } else if self.traitCollection.verticalSizeClass == .regular, self.traitCollection.horizontalSizeClass == .regular {
-      NSLayoutConstraint.deactivate(verticalCompactHorizontalRegularConstraints)
-      NSLayoutConstraint.deactivate(verticalCompactHorizontalCompactConstraints)
-      NSLayoutConstraint.deactivate(verticalRegularHorizontalCompactConstraints)
-      
-      NSLayoutConstraint.activate(verticalRegularHorizontalRegularConstraints)
+    let currentSizeClassPair = SizeClassPair.pair(
+                                  forVertical:   self.traitCollection.verticalSizeClass,
+                                  forHorizontal: self.traitCollection.horizontalSizeClass
+                               )
+    
+    SizeClassPair.allPairs.filter { pair -> Bool in
+      pair != currentSizeClassPair
+    }.forEach { pair in
+      NSLayoutConstraint.deactivate(constraintsDictionary[pair]!)
     }
     
-  }
-  
-  fileprivate func constraintArray(vertical verticalSizeClass: UIUserInterfaceSizeClass, horizontal horizontalSizeClass: UIUserInterfaceSizeClass) -> [NSLayoutConstraint] {
-    switch verticalSizeClass {
-    case .compact:
-      switch horizontalSizeClass {
-      case .compact:
-        return verticalCompactHorizontalCompactConstraints
-      default:
-        return verticalCompactHorizontalRegularConstraints
-      }
-    default:
-      switch verticalSizeClass {
-      case .compact:
-        return verticalRegularHorizontalCompactConstraints
-      default:
-        return verticalRegularHorizontalRegularConstraints
-      }
-    }
+    NSLayoutConstraint.activate(constraintsDictionary[currentSizeClassPair]!)
     
   }
 }
