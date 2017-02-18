@@ -8,7 +8,7 @@ Including this pod extends UIViewControllers with functions to set constraints f
                        DESC
 
   s.homepage         = 'https://github.com/Lutzifer/SizeClassAwareness'
-  s.screenshots      = 'https://github.com/Lutzifer/SizeClassAwareness/raw/dev/Portrait.png, https://github.com/Lutzifer/SizeClassAwareness/raw/dev/Landscape.png'
+  s.screenshots      = 'https://github.com/Lutzifer/SizeClassAwareness/raw/dev/Portrait.png', 'https://github.com/Lutzifer/SizeClassAwareness/raw/dev/Landscape.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Wolfgang Lutz' => 'wlut@num42.de' }
   s.source           = { :git => 'https://github.com/Lutzifer/SizeClassAwareness.git', :tag => s.version.to_s }
