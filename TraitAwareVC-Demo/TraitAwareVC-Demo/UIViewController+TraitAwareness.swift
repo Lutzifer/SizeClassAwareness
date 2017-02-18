@@ -1,5 +1,5 @@
 //
-//  TraitAwareUIViewController.swift
+//  UIViewController+TraitAwareness.swift
 //
 //  Created by Wolfgang Lutz on 12.02.17.
 //  Copyright © 2017 Wolfgang Lutz. All rights reserved.

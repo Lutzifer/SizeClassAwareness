@@ -12,7 +12,7 @@
 		8410D90A1E50805D003AEA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8410D9081E50805D003AEA65 /* Main.storyboard */; };
 		8410D90C1E50805D003AEA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8410D90B1E50805D003AEA65 /* Assets.xcassets */; };
 		8410D90F1E50805D003AEA65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8410D90D1E50805D003AEA65 /* LaunchScreen.storyboard */; };
-		8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass.swift */; };
+		8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass+name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass+name.swift */; };
 		8410D9261E50B60A003AEA65 /* TraitAwareUIViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */; };
 		8410D9271E50B60A003AEA65 /* TraitAwareUIViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84C994271E51E98700A112EE /* UIViewController+TraitAwareness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410D9161E50B094003AEA65 /* UIViewController+TraitAwareness.swift */; };
@@ -57,7 +57,7 @@
 		8410D90E1E50805D003AEA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8410D9101E50805D003AEA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8410D9161E50B094003AEA65 /* UIViewController+TraitAwareness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+TraitAwareness.swift"; path = "../TraitAwareVC-Demo/UIViewController+TraitAwareness.swift"; sourceTree = "<group>"; };
-		8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUserInterfaceSizeClass.swift; sourceTree = "<group>"; };
+		8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass+name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIUserInterfaceSizeClass+name.swift"; sourceTree = "<group>"; };
 		8410D91F1E50B60A003AEA65 /* TraitAwareUIViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraitAwareUIViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8410D9221E50B60A003AEA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D3B6FB1E589A6E0040109C /* Lifting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lifting.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 				8410D90B1E50805D003AEA65 /* Assets.xcassets */,
 				8410D90D1E50805D003AEA65 /* LaunchScreen.storyboard */,
 				8410D9101E50805D003AEA65 /* Info.plist */,
-				8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass.swift */,
+				8410D9181E50B176003AEA65 /* UIUserInterfaceSizeClass+name.swift */,
 			);
 			path = "TraitAwareVC-Demo";
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C994271E51E98700A112EE /* UIViewController+TraitAwareness.swift in Sources */,
-				8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass.swift in Sources */,
+				8410D9191E50B176003AEA65 /* UIUserInterfaceSizeClass+name.swift in Sources */,
 				8410D9071E50805D003AEA65 /* ViewController.swift in Sources */,
 				84D3B7001E589B180040109C /* SizeClassPair.swift in Sources */,
 				8410D9051E50805D003AEA65 /* AppDelegate.swift in Sources */,
