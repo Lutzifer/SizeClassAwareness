@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SizeClassAwareness: c92c2d2b9422ed1d7e7e6d09958adedda264ccdc
+  SizeClassAwareness: 7c679769dcdbacdf8c3c9989e16e3e30175a38de
 
-PODFILE CHECKSUM: 943bddceb3aa108a2ac1296ec189dcb76c2afc6f
+PODFILE CHECKSUM: 559c968009c62a348b0d32af1d988fd022acb2ad
 
 COCOAPODS: 1.2.0
