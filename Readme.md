@@ -2,6 +2,10 @@
 
 This UIViewController subclass has the ability to set constraints based on the TraitCollection:
 
+
+![Demo Gif of rotating View](https://github.com/Lutzifer/TraitAwareUIViewController/raw/dev/Demo.gif)
+
+
 ```swift
 // For Horizontally Regular, GreenView is in lower-leading corner
 let leadingConstraint = self.greenView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
