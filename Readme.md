@@ -1,4 +1,4 @@
-# TraitAwareness
+# SizeClassAwareness
 
 This UIViewController extension adds the ability to set constraints based on the TraitCollection:
 
@@ -7,16 +7,16 @@ This UIViewController extension adds the ability to set constraints based on the
 
 ## Installation
 
-TraitAwareness is available through [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org).
+SizeClassAwareness is available through [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org).
 
 ### Carthage
 
-To install TraitAwareness with Carthage, add the following line to your `Cartfile`.
+To install SizeClassAwareness with Carthage, add the following line to your `Cartfile`.
 
 #### Swift 3.0.x
 
 ```
-github "Lutzifer/TraitAwareness"
+github "Lutzifer/SizeClassAwareness"
 ```
 
 Then run `carthage update --no-use-binaries` command or just `carthage update`. For details of the installation and usage of Carthage, visit [its project page](https://github.com/Carthage/Carthage).
@@ -24,7 +24,7 @@ Then run `carthage update --no-use-binaries` command or just `carthage update`. 
 
 ### CocoaPods
 
-To install TraitAwareness with CocoaPods, add the following lines to your `Podfile`.
+To install SizeClassAwareness with CocoaPods, add the following lines to your `Podfile`.
 
 #### Swift 3.0.x
 
@@ -33,7 +33,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'TraitAwareness'
+pod 'SizeClassAwareness'
 
 ```
 

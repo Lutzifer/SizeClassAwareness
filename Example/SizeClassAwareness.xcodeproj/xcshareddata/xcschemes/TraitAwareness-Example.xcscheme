@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "TraitAwareness_Example.app"
-               BlueprintName = "TraitAwareness_Example"
-               ReferencedContainer = "container:TraitAwareness.xcodeproj">
+               BuildableName = "SizeClassAwareness_Example.app"
+               BlueprintName = "SizeClassAwareness_Example"
+               ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "TraitAwareness_Tests.xctest"
-               BlueprintName = "TraitAwareness_Tests"
-               ReferencedContainer = "container:TraitAwareness.xcodeproj">
+               BuildableName = "SizeClassAwareness_Tests.xctest"
+               BlueprintName = "SizeClassAwareness_Tests"
+               ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "TraitAwareness_Tests.xctest"
-               BlueprintName = "TraitAwareness_Tests"
-               ReferencedContainer = "container:TraitAwareness.xcodeproj">
+               BuildableName = "SizeClassAwareness_Tests.xctest"
+               BlueprintName = "SizeClassAwareness_Tests"
+               ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "TraitAwareness_Example.app"
-            BlueprintName = "TraitAwareness_Example"
-            ReferencedContainer = "container:TraitAwareness.xcodeproj">
+            BuildableName = "SizeClassAwareness_Example.app"
+            BlueprintName = "SizeClassAwareness_Example"
+            ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "TraitAwareness_Example.app"
-            BlueprintName = "TraitAwareness_Example"
-            ReferencedContainer = "container:TraitAwareness.xcodeproj">
+            BuildableName = "SizeClassAwareness_Example.app"
+            BlueprintName = "SizeClassAwareness_Example"
+            ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "TraitAwareness_Example.app"
-            BlueprintName = "TraitAwareness_Example"
-            ReferencedContainer = "container:TraitAwareness.xcodeproj">
+            BuildableName = "SizeClassAwareness_Example.app"
+            BlueprintName = "SizeClassAwareness_Example"
+            ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

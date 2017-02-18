@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "849261C71E58A6B900BC29DA"
-               BuildableName = "TraitAwareness.framework"
-               BlueprintName = "TraitAwareness"
-               ReferencedContainer = "container:TraitAwareness.xcodeproj">
+               BuildableName = "SizeClassAwareness.framework"
+               BlueprintName = "SizeClassAwareness"
+               ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "849261C71E58A6B900BC29DA"
-            BuildableName = "TraitAwareness.framework"
-            BlueprintName = "TraitAwareness"
-            ReferencedContainer = "container:TraitAwareness.xcodeproj">
+            BuildableName = "SizeClassAwareness.framework"
+            BlueprintName = "SizeClassAwareness"
+            ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "849261C71E58A6B900BC29DA"
-            BuildableName = "TraitAwareness.framework"
-            BlueprintName = "TraitAwareness"
-            ReferencedContainer = "container:TraitAwareness.xcodeproj">
+            BuildableName = "SizeClassAwareness.framework"
+            BlueprintName = "SizeClassAwareness"
+            ReferencedContainer = "container:SizeClassAwareness.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

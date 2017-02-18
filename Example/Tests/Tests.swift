@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import TraitAwareness
+import SizeClassAwareness
 
 class Tests: XCTestCase {
     

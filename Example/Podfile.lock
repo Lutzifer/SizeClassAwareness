@@ -1,15 +1,15 @@
 PODS:
-  - TraitAwareness (0.1.0)
+  - SizeClassAwareness (0.1.0)
 
 DEPENDENCIES:
-  - TraitAwareness (from `../`)
+  - SizeClassAwareness (from `../`)
 
 EXTERNAL SOURCES:
-  TraitAwareness:
+  SizeClassAwareness:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TraitAwareness: c92c2d2b9422ed1d7e7e6d09958adedda264ccdc
+  SizeClassAwareness: c92c2d2b9422ed1d7e7e6d09958adedda264ccdc
 
 PODFILE CHECKSUM: 943bddceb3aa108a2ac1296ec189dcb76c2afc6f
 

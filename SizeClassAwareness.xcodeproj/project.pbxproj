@@ -10,15 +10,15 @@
 		84D592011E58A70900482C0F /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 84D591FD1E58A70900482C0F /* Assets */; };
 		84D592021E58A70900482C0F /* Classes in Resources */ = {isa = PBXBuildFile; fileRef = 84D591FE1E58A70900482C0F /* Classes */; };
 		84D592031E58A70900482C0F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D591FF1E58A70900482C0F /* Info.plist */; };
-		84D592041E58A70900482C0F /* TraitAwareness.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D592001E58A70900482C0F /* TraitAwareness.h */; };
+		84D592041E58A70900482C0F /* SizeClassAwareness.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D592001E58A70900482C0F /* SizeClassAwareness.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		849261C81E58A6B900BC29DA /* TraitAwareness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TraitAwareness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		849261C81E58A6B900BC29DA /* SizeClassAwareness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SizeClassAwareness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D591FD1E58A70900482C0F /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		84D591FE1E58A70900482C0F /* Classes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Classes; sourceTree = "<group>"; };
 		84D591FF1E58A70900482C0F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84D592001E58A70900482C0F /* TraitAwareness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitAwareness.h; sourceTree = "<group>"; };
+		84D592001E58A70900482C0F /* SizeClassAwareness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeClassAwareness.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +35,7 @@
 		849261BE1E58A6B900BC29DA = {
 			isa = PBXGroup;
 			children = (
-				849261CA1E58A6B900BC29DA /* TraitAwareness */,
+				849261CA1E58A6B900BC29DA /* SizeClassAwareness */,
 				849261C91E58A6B900BC29DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,20 +43,20 @@
 		849261C91E58A6B900BC29DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				849261C81E58A6B900BC29DA /* TraitAwareness.framework */,
+				849261C81E58A6B900BC29DA /* SizeClassAwareness.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		849261CA1E58A6B900BC29DA /* TraitAwareness */ = {
+		849261CA1E58A6B900BC29DA /* SizeClassAwareness */ = {
 			isa = PBXGroup;
 			children = (
 				84D591FD1E58A70900482C0F /* Assets */,
 				84D591FE1E58A70900482C0F /* Classes */,
 				84D591FF1E58A70900482C0F /* Info.plist */,
-				84D592001E58A70900482C0F /* TraitAwareness.h */,
+				84D592001E58A70900482C0F /* SizeClassAwareness.h */,
 			);
-			path = TraitAwareness;
+			path = SizeClassAwareness;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -66,16 +66,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D592041E58A70900482C0F /* TraitAwareness.h in Headers */,
+				84D592041E58A70900482C0F /* SizeClassAwareness.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		849261C71E58A6B900BC29DA /* TraitAwareness */ = {
+		849261C71E58A6B900BC29DA /* SizeClassAwareness */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 849261D01E58A6B900BC29DA /* Build configuration list for PBXNativeTarget "TraitAwareness" */;
+			buildConfigurationList = 849261D01E58A6B900BC29DA /* Build configuration list for PBXNativeTarget "SizeClassAwareness" */;
 			buildPhases = (
 				849261C31E58A6B900BC29DA /* Sources */,
 				849261C41E58A6B900BC29DA /* Frameworks */,
@@ -86,9 +86,9 @@
 			);
 			dependencies = (
 			);
-			name = TraitAwareness;
-			productName = TraitAwareness;
-			productReference = 849261C81E58A6B900BC29DA /* TraitAwareness.framework */;
+			name = SizeClassAwareness;
+			productName = SizeClassAwareness;
+			productReference = 849261C81E58A6B900BC29DA /* SizeClassAwareness.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -106,7 +106,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 849261C21E58A6B900BC29DA /* Build configuration list for PBXProject "TraitAwareness" */;
+			buildConfigurationList = 849261C21E58A6B900BC29DA /* Build configuration list for PBXProject "SizeClassAwareness" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				849261C71E58A6B900BC29DA /* TraitAwareness */,
+				849261C71E58A6B900BC29DA /* SizeClassAwareness */,
 			);
 		};
 /* End PBXProject section */
@@ -254,10 +254,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TraitAwareness/Info.plist;
+				INFOPLIST_FILE = SizeClassAwareness/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.lutz-wiesent.TraitAwareness";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.lutz-wiesent.SizeClassAwareness";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -272,10 +272,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TraitAwareness/Info.plist;
+				INFOPLIST_FILE = SizeClassAwareness/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.lutz-wiesent.TraitAwareness";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.lutz-wiesent.SizeClassAwareness";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -285,7 +285,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		849261C21E58A6B900BC29DA /* Build configuration list for PBXProject "TraitAwareness" */ = {
+		849261C21E58A6B900BC29DA /* Build configuration list for PBXProject "SizeClassAwareness" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				849261CE1E58A6B900BC29DA /* Debug */,
@@ -294,7 +294,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		849261D01E58A6B900BC29DA /* Build configuration list for PBXNativeTarget "TraitAwareness" */ = {
+		849261D01E58A6B900BC29DA /* Build configuration list for PBXNativeTarget "SizeClassAwareness" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				849261D11E58A6B900BC29DA /* Debug */,

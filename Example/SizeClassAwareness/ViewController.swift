@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TraitAwareness
+import SizeClassAwareness
 
 class ViewController: UIViewController {
   

@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'TraitAwareness_Example' do
-  pod 'TraitAwareness', :path => '../'
+target 'SizeClassAwareness_Example' do
+  pod 'SizeClassAwareness', :path => '../'
 
-  target 'TraitAwareness_Tests' do
+  target 'SizeClassAwareness_Tests' do
     inherit! :search_paths
 
     
